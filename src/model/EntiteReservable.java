@@ -1,15 +1,9 @@
 package model;
 
-public class EntiteReservable <F extends Formulaire>{
-	private String calendrier;
+public abstract class EntiteReservable <F extends Formulaire>{
+	private CalendrierAnnuel calendrier = new CalendrierAnnuel();;
 	private int identification;
 	
-	public EntiteReservable(String calendrier, int identification) {
-		super();
-		this.calendrier = calendrier;
-		this.identification = identification;
-	}
-
 	public int getIdentification() {
 		return identification;
 	}
@@ -18,15 +12,11 @@ public class EntiteReservable <F extends Formulaire>{
 		this.identification = identification;
 	}
 	
-	public boolean estLibre (F formulaire) {
-		return true;
+	public boolean estLibre (int jour, int mois) {
+		return calendrier.estLibre(jour, mois);
 	}
 	
-	public void compatible() {
-		
-	}
+	public abstract boolean compatible();
 	
-	public void reserver() {
-		
-	}
+	public abstract Reservation reserver(F formulaire);
 }

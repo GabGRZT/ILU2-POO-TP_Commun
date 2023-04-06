@@ -10,16 +10,6 @@ public class FormulaireHotel extends Formulaire{
 		this.nbLitDouble = nbLitDouble;
 	}
 
-	@Override
-	public int getIdentificationEntite() {
-		return IdentificationEntite;
-	}
-
-	@Override
-	public void setIdentificationEntite(int indentificationEntite) {
-		this.IdentificationEntite = indentificationEntite;
-	}
-
 	public int getNbLitsSimple() {
 		return nbLitsSimple;
 	}

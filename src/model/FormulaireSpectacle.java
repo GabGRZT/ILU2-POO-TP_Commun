@@ -8,17 +8,6 @@ public class FormulaireSpectacle extends Formulaire {
 		this.numZone = numZone;
 	}
 
-	@Override
-	public int getIdentificationEntite() {
-		return IdentificationEntite;
-	}
-
-	@Override
-	public void setIdentificationEntite(int indentificationEntite) {
-		this.IdentificationEntite = indentificationEntite;
-	}
-	
-
 	public int getNumZone() {
 		return numZone;
 	}
