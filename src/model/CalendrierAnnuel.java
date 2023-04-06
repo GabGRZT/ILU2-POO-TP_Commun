@@ -1,7 +1,5 @@
 package model;
 
-import jdk.nashorn.internal.ir.CatchNode;
-
 public class CalendrierAnnuel {
 	private Mois[] calendrier;
 

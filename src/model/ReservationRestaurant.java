@@ -4,7 +4,7 @@ public class ReservationRestaurant extends Reservation {
 	private int numService;
 	private int numTable;
 	
-	public ReservationRestaurant(int numService, int numTable, int jour, int mois) {
+	public ReservationRestaurant( int jour, int mois, int numService, int numTable) {
 		super(jour,mois);
 		this.numService = numService;
 		this.numTable = numTable;
@@ -12,7 +12,10 @@ public class ReservationRestaurant extends Reservation {
 	
 	@Override
 	public String toString() {
-		return "Le"+jour+"/"+mois+": table n°"+numTable+" pour le deuxieme service";
+		if (numService == 1) {
+			return "Le "+jour+"/"+mois+" : table nï¿½"+numTable+" pour le premier service.\n";
+		}else {
+		return "Le "+jour+"/"+mois+" : table nï¿½"+numTable+" pour le deuxiï¿½me service.\n";	
+		}
 	}
-	
 }
