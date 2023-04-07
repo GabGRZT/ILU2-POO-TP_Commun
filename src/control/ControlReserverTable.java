@@ -1,0 +1,55 @@
+package control;
+
+
+import model.CarnetClientele;
+import model.Client;
+import model.FormulaireRestaurant;
+import model.Reservation;
+import model.ReservationRestaurant;
+import model.Restaurant;
+
+public class ControlReserverTable {
+	private CarnetClientele carnetClientel;
+	private FormulaireRestaurant [] formulaires;
+	private Restaurant restaurant;
+
+	public ControlReserverTable(Restaurant restaurant, CarnetClientele carnetClientel) {
+		this.carnetClientel = carnetClientel;
+	}
+	
+	public int[] trouverPossibilite(int jour, int mois, int nbPersonne,	int numService) {
+			FormulaireRestaurant formulaire = new FormulaireRestaurant(jour, mois, nbPersonne, numService);
+			boolean formulaireEnregistrer = false;
+			int numeroFormulaire = -1;
+			
+			for (int i = 0; i < formulaires.length && !formulaireEnregistrer; i++) {
+				if (formulaires[i] == null) {
+				formulaires[i] = formulaire;
+				formulaireEnregistrer = true;
+				numeroFormulaire = i;
+				}
+			}
+			
+			int[] possibilites = new int[formulaires.length];
+			
+			int[] retour = new int[possibilites.length + 1];
+			retour[0] = numeroFormulaire;
+			for (int i = 1; i < possibilites.length + 1; i++) {
+				retour[i] = possibilites[i - 1];
+			}
+			return retour;
+			
+	}
+			
+	public void reserver(int numClient, int numProposition, int numeroFormulaire) {
+		FormulaireRestaurant formulaireRestaurant = formulaires[numeroFormulaire];
+		formulaires[numeroFormulaire] = null;
+		Reservation reservation	= restaurant.reserver(numProposition, formulaireRestaurant);
+		if (reservation instanceof ReservationRestaurant) {
+			ReservationRestaurant reservationRestaurant	= (ReservationRestaurant) reservation;
+			Client client = carnetClientel.getClient(numClient);
+			//A COMPLETER;
+		}
+	}
+
+}

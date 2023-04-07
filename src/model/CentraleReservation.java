@@ -1,26 +1,32 @@
 package model;
 
+public class CentraleReservation <E extends EntiteReservable<F>, F extends Formulaire> {
+	private int nbentites;
+	private EntiteReservable <F> tableau[];
+	
+	
+	
+	public CentraleReservation( EntiteReservable<F>[] tableau) {
+		this.tableau = tableau;
+	}
 
-public class CentraleReservation <T extends Formulaire> {
-	private EntiteReservable [] tabEntite;
-	private int nbEntite = 0;
-	
-	public CentraleReservation(EntiteReservable[] tabEntite, int nbEntite) {
-		this.tabEntite = new EntiteReservable[nbEntite];
-		this.nbEntite = nbEntite;
-	}
-	
-	public EntiteReservable ajouterEntite(EntiteReservable <T> entite) {
-		tabEntite[nbEntite] = entite;
-		nbEntite += 1;
-		return entite;
-	}
-	
-	public void donnerPossibilites() {
+	public int ajouterEntite(EntiteReservable <F> entite) {
+		tableau[++nbentites] = entite;
+		return nbentites;
 		
 	}
 	
-	public void reserver () {
-
+	public int[] donnerPossibilites(F formulaire) {
+		int tabint[] = new int[nbentites];
+		for(int i = 0; i>nbentites;i++) {
+			if(tableau[i].compatible(formulaire)) tabint[i] = nbentites;
+			else tabint[i] = 0;
+		}
+		return tabint;
+	}
+	
+	public Reservation reserver(int i, F formulaire) {
+		formulaire.setIdentificationEntite(i);
+		return tableau[i].reserver(formulaire);
 	}
 }

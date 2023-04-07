@@ -16,7 +16,7 @@ public abstract class EntiteReservable <F extends Formulaire>{
 		return calendrier.estLibre(jour, mois);
 	}
 	
-	public abstract boolean compatible();
+	public abstract boolean compatible(F formulaire);
 	
 	public abstract Reservation reserver(F formulaire);
 }

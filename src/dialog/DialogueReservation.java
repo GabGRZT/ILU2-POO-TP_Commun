@@ -2,6 +2,8 @@ package dialog;
 
 import java.awt.EventQueue;
 
+import control.ControlReserverTable;
+import control.ControlVisualiserCarnetClientele;
 import presentation.JFrameReservation;
 
 public class DialogueReservation {
@@ -10,9 +12,14 @@ public class DialogueReservation {
 	private String time;
 	private String numPersons;
 	private int numTable;
+	private int [] propositions;
+	private static ControlReserverTable controlReserverTable;
+	private static ControlVisualiserCarnetClientele controlVisualiserCarnetClientele;
 	
 	private JFrameReservation presentationReservation;
 	
+	public DialogueReservation (ControlReserverTable controlReserverTable, ControlVisualiserCarnetClientele controlVisualiserCarnetClientele){
+	}
 	
 	public void initDialog() {
 		//Create presentation frame
@@ -72,7 +79,7 @@ public class DialogueReservation {
 	public static void main(String[] args) {
 		
 		//Create dialogReservation
-		DialogueReservation dialogReservation = new DialogueReservation();
+		DialogueReservation dialogReservation = new DialogueReservation(controlReserverTable, controlVisualiserCarnetClientele);
 				
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -83,6 +90,11 @@ public class DialogueReservation {
 				}
 			}
 		});
+	}
+
+	public void handleUserConnected(int numClient) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
